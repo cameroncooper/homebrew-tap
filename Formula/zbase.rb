@@ -1,8 +1,8 @@
 class Zbase < Formula
   desc "A fast, native chat client"
   homepage "https://github.com/cameroncooper/zbase"
-  url "https://github.com/cameroncooper/zbase/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 ""
+  url "https://github.com/cameroncooper/zbase/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "3d9b8d8d4a9c347ab262a41095a8751b01493192a9c34691f65d2fc8f8de3dfa"
   license "MIT"
 
   depends_on "rust" => :build
@@ -71,4 +71,3 @@ class Zbase < Formula
     assert_predicate bin/"zbase", :executable?
   end
 end
-
