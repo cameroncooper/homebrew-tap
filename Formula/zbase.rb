@@ -1,8 +1,8 @@
 class Zbase < Formula
   desc "A fast, native chat client"
   homepage "https://github.com/cameroncooper/zbase"
-  url "https://github.com/cameroncooper/zbase/archive/refs/tags/v1.0.2.tar.gz"
-  sha256 "e5f2b198ace5e5ef9ddae34aff20a7651d0c3adccf0928281c2f4ccf8738257c"
+  url "https://github.com/cameroncooper/zbase/archive/refs/tags/v1.0.3.tar.gz"
+  sha256 "41a40e19d68ddbfa4e857261ef2761461d6bfb9fcc5258091e76e0be7c9e92f3"
   license "MIT"
 
   depends_on "rust" => :build
