@@ -5,21 +5,21 @@ class CursorAcp < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/cameroncooper/cursor-acp/releases/download/v1.0.9/cursor-acp-1.0.9-aarch64-apple-darwin.tar.gz"
-      sha256 "ba18c3a73cfc69b287361baf95d78e568e6c657367bd9352a16f66d3f8a50fb5"
+      url "https://github.com/cameroncooper/cursor-acp/releases/download/v1.0.10/cursor-acp-1.0.10-aarch64-apple-darwin.tar.gz"
+      sha256 "8221ba45b3247b85e3730ba4536c19dacc641fed581f1ef6d2eafb1585ee04bc"
     else
-      url "https://github.com/cameroncooper/cursor-acp/releases/download/v1.0.9/cursor-acp-1.0.9-x86_64-apple-darwin.tar.gz"
-      sha256 "e80918d233c43b55c42da478c0d41174a6aefc3e13eab6ad3a16d01e7291cb56"
+      url "https://github.com/cameroncooper/cursor-acp/releases/download/v1.0.10/cursor-acp-1.0.10-x86_64-apple-darwin.tar.gz"
+      sha256 "3fd94b3ea71ab85d232cf26c80066ebe4518304e87dbe457fb8208128ff58a35"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/cameroncooper/cursor-acp/releases/download/v1.0.9/cursor-acp-1.0.9-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "2265736e129b8bb1fafc0348bc60750b30d7a568d44f7802f90d5dee7f6fb69e"
+      url "https://github.com/cameroncooper/cursor-acp/releases/download/v1.0.10/cursor-acp-1.0.10-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "3ee6210547d8826bc70c632669340a753a20ccb6e713f7a80caef25c2440704e"
     else
-      url "https://github.com/cameroncooper/cursor-acp/releases/download/v1.0.9/cursor-acp-1.0.9-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "5910b51070c4900e86115a5a1abd1812a54273ed1fbb28a713d3723baaa70eb7"
+      url "https://github.com/cameroncooper/cursor-acp/releases/download/v1.0.10/cursor-acp-1.0.10-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "12f2ddc065ac1d1509f7105b55b7b43722f49519e312859ecabd4bcedfdf88a3"
     end
   end
 
