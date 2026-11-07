@@ -1,69 +1,26 @@
 class Zbase < Formula
   desc "A fast, native chat client"
   homepage "https://github.com/cameroncooper/zbase"
-  url "https://github.com/cameroncooper/zbase/archive/refs/tags/v1.0.12.tar.gz"
-  sha256 "9813285b2350d31cfdf17c5fcb0303e4c29234b99318260b204036b478527bdb"
+  url "https://github.com/cameroncooper/zbase/archive/refs/tags/v1.0.16.tar.gz"
+  sha256 "502c6280ec5082b4d9f18ca591006589d6da9dfd813bf74b57808aa57e522747"
   license "MIT"
 
   depends_on "rust" => :build
   depends_on "cmake" => :build
-  depends_on "pkg-config" => :build
-  depends_on :macos
+  depends_on "pkgconf" => :build
+  depends_on macos: :sequoia
   depends_on "ffmpeg"
 
   def install
-    system "cargo", "build", "--release", "--locked"
-
-    bin.install "target/release/zbase"
-
-    app = prefix/"zBase.app/Contents"
-    (app/"MacOS").mkpath
-    (app/"Resources").mkpath
-
-    cp bin/"zbase", app/"MacOS/zbase"
-    cp "assets/macos/AppIcon.icns", app/"Resources/AppIcon.icns" if File.exist?("assets/macos/AppIcon.icns")
-
-    (app/"Info.plist").write <<~PLIST
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-      <dict>
-        <key>CFBundleDevelopmentRegion</key>
-        <string>en</string>
-        <key>CFBundleDisplayName</key>
-        <string>zBase</string>
-        <key>CFBundleExecutable</key>
-        <string>zbase</string>
-        <key>CFBundleIconFile</key>
-        <string>AppIcon</string>
-        <key>CFBundleIdentifier</key>
-        <string>com.zbase.app</string>
-        <key>CFBundleInfoDictionaryVersion</key>
-        <string>6.0</string>
-        <key>CFBundleName</key>
-        <string>zBase</string>
-        <key>CFBundlePackageType</key>
-        <string>APPL</string>
-        <key>CFBundleShortVersionString</key>
-        <string>#{version}</string>
-        <key>CFBundleVersion</key>
-        <string>#{version}</string>
-        <key>LSMinimumSystemVersion</key>
-        <string>13.0</string>
-        <key>NSHighResolutionCapable</key>
-        <true/>
-      </dict>
-      </plist>
-    PLIST
+    system "scripts/macos/build_app_bundle.sh", "release"
+    prefix.install "dist/macos/zBase.app"
+    bin.install_symlink prefix/"zBase.app/Contents/MacOS/zbase"
   end
 
   def caveats
     <<~EOS
-      The zBase.app bundle has been installed to:
-        #{prefix}/zBase.app
-
-      To add it to your Applications folder:
-        ln -sf #{prefix}/zBase.app /Applications/zBase.app
+      The zBase.app bundle is at #{prefix}/zBase.app.
+      Official signed and notarized DMGs are available on GitHub Releases.
     EOS
   end
 
